@@ -12,9 +12,18 @@ import yaml
 
 def main():
     for p in pathlib.Path(sys.argv[1]).glob('*.json'):
+        b = {}
         with p.open() as f:
-            t = json.load(f)
-            yaml.safe_dump(t, sys.stdout, allow_unicode=True)
+            t = json.load(f)['address']
+            b['Temporary_mail'] = t['Temporary_mail']
+            b['Full_Name'] = t['Full_Name']
+            b['Birthday'] = t['Birthday']
+            b['Password'] = t['Password']
+            b['Address'] = t['Address']
+            b['City'] = t['City']
+            b['Zip_Code'] = t['Zip_Code']
+
+            yaml.safe_dump(b, sys.stdout, allow_unicode=True)
             print()
 
 
