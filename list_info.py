@@ -14,7 +14,7 @@ def main():
     for p in pathlib.Path(sys.argv[1]).glob('*.json'):
         with p.open() as f:
             t = json.load(f)
-            yaml.safe_dump(t, sys.stdout)
+            yaml.safe_dump(t, sys.stdout, allow_unicode=True)
             print()
 
 
